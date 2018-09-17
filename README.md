@@ -33,7 +33,7 @@ test_dir/dandelion.jpg
 [(u'n02206856', u'bee', 0.7928109), (u'n11939491', u'daisy', 0.0660278), (u'n02190166', u'fly', 0.045882557)]
 ```
 
-As we can see, ImageNet don't have many flower labels.
+As we can see, ImageNet don't have many flower labels, so it doesn't recognize most of the images we passed in except daisy.
 
 With transfer learning (without fine-tuning), we see that
 
@@ -46,7 +46,7 @@ Epoch 3/3
 122/122 [==============================] - 855s 7s/step - loss: 0.6697 - acc: 0.7574 - val_loss: 2.0573 - val_acc: 0.4578
 ```
 
-When we test on the 5 images, we got
+When we test on the 5 images on the new model that predicts only one of the 5 labels, we got
 
 ```
 Using TensorFlow backend.
@@ -67,6 +67,7 @@ prediction: sunflower with probability 0.509505
 ```
 
 As we can see, the validation set has only accuracy 0.4578, still has a lot of improvement space. A few things I can still try in the future:
-* The training accuracy much higher than lower accurcy, meaning there might be an overfitting issue. So more data could help. In particular, daisy and tulip seems to be doing pretty well, so more data of rose, sunflower especially dandelion could help.
+
+* The training accuracy (0.7574) much higher than lower accurcy (0.4578), meaning there might be an overfitting issue. So more data could help. In particular, daisy and tulip seems to be doing pretty well, so more data of rose, sunflower especially dandelion could help.
 * I didn't do "fine-tuning" part (only transfer learning part) due to time limit. Fine-tuning changes weights of previous layers too while transfer-learning only chanegs the last layer. I should try running the training on Google Cloud or AWS.
 * Perhaps more epoches? Since the cost seems to still go down after 3 epoches.
