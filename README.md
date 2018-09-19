@@ -68,6 +68,45 @@ prediction: sunflower with probability 0.509505
 
 As we can see, the validation set has only accuracy 0.4578, still has a lot of improvement space. A few things I can still try in the future:
 
-* The training accuracy (0.7574) much higher than lower accurcy (0.4578), meaning there might be an overfitting issue. So more data could help. In particular, daisy and tulip seems to be doing pretty well, so more data of rose, sunflower especially dandelion could help.
+* The training accuracy (0.7574) much higher than lower accurcy (0.4578), meaning there might be an overfitting issue. So more data could help. In particular, sunflower, rose dandelion have low confidence. The dandelion one is even incorrect.
+
 * I didn't do "fine-tuning" part (only transfer learning part) due to time limit. Fine-tuning changes weights of previous layers too while transfer-learning only chanegs the last layer. I should try running the training on Google Cloud or AWS.
+
 * Perhaps more epoches? Since the cost seems to still go down after 3 epoches.
+
+UPDATE
+I later tried transfer learning + fine tuning with 4 epoches and got results below.
+
+```
+Epoch 1/4
+122/122 [==============================] - 878s 7s/step - loss: 2.3450 - acc: 0.5519 - val_loss: 2.3498 - val_acc: 0.4225
+Epoch 2/4
+122/122 [==============================] - 893s 7s/step - loss: 0.8199 - acc: 0.7149 - val_loss: 1.6597 - val_acc: 0.5400
+Epoch 3/4
+122/122 [==============================] - 888s 7s/step - loss: 0.6443 - acc: 0.7700 - val_loss: 1.4038 - val_acc: 0.6400
+Epoch 4/4
+122/122 [==============================] - 874s 7s/step - loss: 0.6025 - acc: 0.7798 - val_loss: 2.0306 - val_acc: 0.5475
+```
+
+As we can see. The training accuracy has not improved much, but the validation accuracy improved by 10%.
+
+When testing on a few files individually, we see that rose and sunflower have improved quite a bit. The fine-tuning especially helped rose.
+
+```
+file: test_dir/daisy.jpg
+prediction: daisy with probability 1.0
+
+file: test_dir/sunflower.jpg
+prediction: daisy with probability 0.83497506
+
+file: test_dir/rose.jpg
+prediction: rose with probability 0.9997317
+
+file: test_dir/tulip.jpg
+prediction: tulip with probability 0.99262166
+
+file: test_dir/dandalion.jpg
+prediction: daisy with probability 0.5752756
+```
+
+More data of dnadelion can definitely help.
