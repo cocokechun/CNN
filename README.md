@@ -109,4 +109,4 @@ file: test_dir/dandalion.jpg
 prediction: daisy with probability 0.5752756
 ```
 
-More data of dnadelion can definitely help.
+More data of dandelion can definitely help.
