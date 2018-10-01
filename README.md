@@ -4,7 +4,7 @@ I was curious what types of CNN people generally use for application. Some searc
 
 ![Models](models.png)
 
-I mainly this [tutorail](https://deeplearningsandbox.com/how-to-use-transfer-learning-and-fine-tuning-in-keras-and-tensorflow-to-build-an-image-recognition-94b0b02444f2). In fact, a lot of code samples on [Keras official website](https://keras.io/applications/#inceptionv3) as well.
+I mainly this [tutorisl](https://deeplearningsandbox.com/how-to-use-transfer-learning-and-fine-tuning-in-keras-and-tensorflow-to-build-an-image-recognition-94b0b02444f2). In fact, a lot of code samples on [Keras official website](https://keras.io/applications/#inceptionv3) as well.
 
 The code in image_recognition contains produces top 3 ImageNet labels of some existing model. I changed the code so that we can recognize several images at the same time.
 
